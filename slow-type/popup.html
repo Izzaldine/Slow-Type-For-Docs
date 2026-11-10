@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Slow Type</title><link rel="stylesheet" href="popup.css"></head>
+<body>
+<header><span class="mark">Aa</span><div><h1>Slow Type</h1><p>Your text, at your pace.</p></div><span class="tag">V0.4 · FREE</span></header>
+<main>
+  <div class="drafts"><label for="drafts">Saved drafts</label><div class="row"><select id="drafts"><option value="">New / unsaved draft</option></select><button id="load">Load</button></div><div class="row"><input id="draft-name" maxlength="80" placeholder="Name this draft" aria-label="Draft name"><button id="save-draft">Save</button><button id="delete-draft" title="Delete selected draft">Delete</button></div></div>
+  <label for="text">Text to type</label><textarea id="text" maxlength="100000" placeholder="Paste your text here…" spellcheck="false"></textarea>
+  <div class="meta"><span id="count">0 characters</span><button id="clear" class="text-button">Clear text</button></div>
+  <div class="speed"><label for="speed">Base typing speed · adjustable live</label><output id="speed-label" for="speed">60 WPM</output></div><input id="speed" type="range" min="10" max="200" step="5" value="60">
+  <label class="check"><input id="word-pacing" type="checkbox" checked> Word pacing: quicker letters, gaps between words</label>
+  <div class="speed"><label for="word-pause">Between-word pause</label><output id="word-pause-label" for="word-pause">0.4 s</output></div><input id="word-pause" type="range" min="0" max="3" step="0.1" value="0.4">
+  <p class="hint">With word pacing on, letters use 1.6× the base speed. A pause follows the space before the next word.</p>
+  <div class="speed"><label for="paragraph">Paragraph pause</label><output id="paragraph-label" for="paragraph">1 s</output></div><input id="paragraph" type="range" min="0" max="30" step="0.5" value="1">
+  <label class="check"><input id="sections" type="checkbox"> Type one section at a time</label><p class="hint">A blank line separates sections. Press Continue for the next one.</p>
+  <details class="variation"><summary>Typing variation <span id="variation-summary">Off</span></summary>
+    <div class="speed"><label for="variability">Speed variation</label><output id="variability-label" for="variability">Off</output></div><input id="variability" type="range" min="0" max="80" step="10" value="0">
+    <p class="hint">Randomly varies the gap between letters around your chosen speed.</p>
+    <div class="speed"><label for="typos">Temporary typo frequency</label><output id="typos-label" for="typos">Off</output></div><input id="typos" type="range" min="0" max="5" step="0.5" value="0">
+    <p class="hint">Chance per eligible A–Z letter inside a word. Types a wrong letter, then backspaces and corrects it. Keep the document cursor in place. Pause/Stop lets an ongoing correction finish when possible.</p>
+  </details>
+  <div class="status" role="status" aria-live="polite"><strong id="status">Ready</strong><p id="detail">Open Google Docs, then start.</p><progress id="progress" max="1" value="0" aria-label="Typing progress"></progress><div class="meta progress-meta"><span id="progress-label">0%</span><span id="eta">—</span></div><p id="section-label"></p><p id="correction-label"></p></div>
+  <p id="message" role="alert"></p>
+  <div class="buttons"><button id="start" class="primary">Start typing</button><button id="pause" hidden>Pause</button><button id="resume" class="primary" hidden>Resume</button><button id="stop" hidden>Stop</button></div>
+  <button id="show-panel" class="text-button" hidden>Show floating controls</button>
+  <p class="steps">After Start or Resume, click inside your document within <b>5 seconds</b>. You can then work in another window; leave Docs selected in its own window.</p>
+  <footer><b>Ctrl + Shift + Space</b> pause / resume / continue<br><b>Ctrl + Shift + .</b> stop <span>· Mac: use ⌘ instead of Ctrl.</span></footer>
+  <details><summary>Privacy &amp; permissions</summary><p>No account, payment, analytics, or external server. Named drafts are stored locally until deleted or the extension is uninstalled. The unsaved text is kept only for this browser session. Text typed into Docs is handled by Google Docs.</p><p>Chrome shows a debugging banner while connected. Stop disconnects. The floating panel is added only to the document you start. Time estimates are approximate and exclude manual waiting.</p></details>
+</main><script type="module" src="popup.js"></script>
+</body></html>

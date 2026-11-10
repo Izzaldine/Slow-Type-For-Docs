@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Slow Type for Docs",
+  "version": "0.4.0",
+  "minimum_chrome_version": "118",
+  "description": "Type your supplied plain text gradually into Google Docs, with adjustable speed and pause/stop controls.",
+  "permissions": ["activeTab", "debugger", "storage", "scripting"],
+  "background": {"service_worker": "background.js", "type": "module"},
+  "action": {"default_popup": "popup.html", "default_title": "Slow Type"},
+  "commands": {
+    "pause-resume": {"suggested_key": {"default": "Ctrl+Shift+Space", "mac": "Command+Shift+Space"}, "description": "Pause or resume typing"},
+    "stop": {"suggested_key": {"default": "Ctrl+Shift+Period", "mac": "Command+Shift+Period"}, "description": "Stop typing"}
+  }
+}
